@@ -6,7 +6,7 @@ const Playlist = () => {
     let params = {
       'Access-Control-Allow-Origin': '*',
       part: 'snippet',
-      key: import.meta.env.VITE_REACT_APP_YT_CLIENT_ID,
+      key: import.meta.env.VITE_REACT_APP_YT_KEY,
       mine: true,
     }
     axios.get('https://youtube.googleapis.com/youtube/v3/playlists', { params })
