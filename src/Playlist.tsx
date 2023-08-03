@@ -3,7 +3,7 @@ import yt from './youtube.ts';
 const Playlist = () => {
   
   const handleClick = () => {
-    yt.get('')
+    yt.get('/playlist')
       .then(resp => console.log(resp.data))
       .catch(err => console.error(err))
   }
