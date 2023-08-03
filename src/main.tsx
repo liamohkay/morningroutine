@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import { GoogleOAuthProvider } from '@react-oauth/google'
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google'
 import { ClerkProvider, SignedIn, SignedOut, SignIn,  SignUp, RedirectToSignIn } from "@clerk/clerk-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 
@@ -24,6 +24,11 @@ function ClerkProviderWithRoutes() {
           element={
           <>
             <SignedIn>
+              <GoogleLogin 
+                auto_select
+                onSuccess={(resp: any) => console.log(resp)}
+                onError={() => console.log('Login Failed')}
+              />
               <App />
             </SignedIn>
              <SignedOut>
