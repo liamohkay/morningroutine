@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 import { ClerkProvider, SignedIn, SignedOut, SignIn,  SignUp, RedirectToSignIn } from "@clerk/clerk-react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+
 
 if (!import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
@@ -11,7 +13,6 @@ const clerkPubKey = import.meta.env.VITE_REACT_APP_CLERK_PUBLISHABLE_KEY;
 
 function ClerkProviderWithRoutes() {
   const navigate = useNavigate();
-
   return (
     <ClerkProvider
       publishableKey={clerkPubKey}
@@ -47,7 +48,9 @@ function ClerkProviderWithRoutes() {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <ClerkProviderWithRoutes />
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_REACT_APP_YT_CLIENT_ID}>
+        <ClerkProviderWithRoutes />
+      </GoogleOAuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )

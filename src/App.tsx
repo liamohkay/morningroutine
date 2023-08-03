@@ -1,14 +1,14 @@
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import Playlist from './Playlist.tsx';
 
-function App() {
+const App = () => {
   return (
     <>
-      <GoogleOAuthProvider clientId={import.meta.env.VITE_REACT_APP_YT_CLIENT_ID}>
-        <GoogleLogin 
-          onSuccess={(resp: any) => console.log(resp)}
-          onError={() => console.log('Login Failed')}
-        />
-      </GoogleOAuthProvider>
+      <GoogleLogin 
+        onSuccess={(resp: any) => console.log(resp)}
+        onError={() => console.log('Login Failed')}
+      />
+      <Playlist />
     </>
   )
 }
