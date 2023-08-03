@@ -3,12 +3,9 @@ import axios from 'axios';
 export default axios.create({
   baseURL: 'https://youtube.googleapis.com/youtube/v3/playlists',
   params: {
+    'Access-Control-Allow-Origin': '*',
     part: 'snippet',
     key: import.meta.env.VITE_REACT_APP_YT_CLIENT_ID,
     mine: true,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods' : 'GET, POST, PUT, DELETE, OPTIONS',
   },
 })
